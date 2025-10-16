@@ -1,0 +1,11 @@
+#yolov8pose使用openvino进行部署的配置文件
+
+model_path: "/home/xiaoyiming/task8/vino_task/src/YoloVino/model/Armor_v8npose_250510_7200.xml" #模型路径
+device_type: "CPU" #使用的设备类型，一般是CPU或者GPU
+
+#下面内容为可选，是为了便于日志记录器进行输出
+
+model_type: "YOLO-V8-POSE" #模型类型
+input_size: "320" #模型的输入图像尺寸
+output_size: "[1,26,2100]" #模型的输出尺寸
+date: "2025/09/12" #修改该yaml的日期

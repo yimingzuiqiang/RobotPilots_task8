@@ -1,0 +1,14 @@
+/home/xiaoyiming/task8/build/CMakeFiles/edit_cache.dir
+/home/xiaoyiming/task8/build/CMakeFiles/rebuild_cache.dir
+/home/xiaoyiming/task8/build/lib/CMakeFiles/Camera.dir
+/home/xiaoyiming/task8/build/lib/CMakeFiles/edit_cache.dir
+/home/xiaoyiming/task8/build/lib/CMakeFiles/rebuild_cache.dir
+/home/xiaoyiming/task8/build/app/CMakeFiles/calibration.dir
+/home/xiaoyiming/task8/build/app/CMakeFiles/edit_cache.dir
+/home/xiaoyiming/task8/build/app/CMakeFiles/rebuild_cache.dir
+/home/xiaoyiming/task8/build/vino_task/CMakeFiles/Task8.dir
+/home/xiaoyiming/task8/build/vino_task/CMakeFiles/edit_cache.dir
+/home/xiaoyiming/task8/build/vino_task/CMakeFiles/rebuild_cache.dir
+/home/xiaoyiming/task8/build/vino_task/src/YoloVino/CMakeFiles/YoloVino_LIB.dir
+/home/xiaoyiming/task8/build/vino_task/src/YoloVino/CMakeFiles/edit_cache.dir
+/home/xiaoyiming/task8/build/vino_task/src/YoloVino/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,11 @@
+      1. wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+      2. sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+      3. ubuntu 20:
+      echo "deb https://apt.repos.intel.com/openvino/2024 ubuntu20 main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2024.list
+      ubuntu 22:
+      echo "deb https://apt.repos.intel.com/openvino/2024 ubuntu22 main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2024.list
+      ubuntu24:
+      echo "deb https://apt.repos.intel.com/openvino/2024 ubuntu24 main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2024.list
+      4. sudo apt update
+      5. apt-cache search openvino
+      6. sudo apt install openvino-2024.4.0
