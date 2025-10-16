@@ -36,6 +36,80 @@ MV_CC_DEVICE_INFO_LIST get_device_list()
     return device_list;
 }
 
+/*
+    PnP算法需要知道
+    3D世界点（在装甲板坐标系与相机坐标系重合时，装甲板四个角点的坐标，常量）
+    2D图像点（YOLO在画面识别到的角点像素坐标）
+    相机内参矩阵（3x3,CV_64F类型）
+    畸变参数(5x1或8x1,CV_64F，无畸变填noArray())
+    输出的旋转向量（3x1）
+    输出的平移向量（3x1）
+    是否使用初始外参猜测（默认false）
+    PnP算法类型
+    */
+
+    //该算法类实现的功能：
+    /*
+    传入内参矩阵，畸变参数，3D世界点，2D世界点。返回旋转向量和平移向量
+*/
+
+//大装甲板的高和宽（单位mm）
+float big_armor_height = 55.0;
+float big_armor_width = 225.0;
+
+//存储3D世界坐标系的装甲板的左上，左下，右下，右上点的坐标
+vector<Point3f> world_points = 
+{
+    Point3f(-big_armor_width/2.0,-big_armor_height/2.0, 0.0), //左上
+    Point3f(-big_armor_width/2.0,big_armor_height/2.0, 0.0),   //左下
+    Point3f(big_armor_width/2.0,big_armor_height/2.0, 0.0),     //右下
+    Point3f(big_armor_width/2.0,-big_armor_height/2.0, 0.0),    //右上
+};
+
+
+//存储YOLO识别出的像素坐标系的装甲板的左上，左下，右下，右上点的坐标（keypoints四个点）
+vector<Point2f> image_points;
+
+//相机内参矩阵
+Mat K = (Mat_<double>(3,3) <<
+  2.3331e+03, -1.6808,      690.8069,
+  0,           2.3271e+03,  554.0654,
+  0,           0,           1  
+);
+
+//畸变参数
+Mat D = (Mat_<double>(1,5) <<
+    -0.1382,0.5323,0.0012,-0.0023,0
+);
+
+//旋转矩阵
+Mat R;
+
+//平移向量
+Mat T;
+
+//Pitch角
+
+//Roll角
+
+//Yaw角
+
+//传入像素坐标系的四个角点
+void cool_pnp(vector<Point2f> img_points)
+{
+    solvePnP
+    (
+        world_points,
+        img_points,
+        K,
+        D,
+        R,
+        T,
+        false,
+        SOLVEPNP_ITERATIVE
+    );
+}
+
 int main(int argc, char const *argv[])
 {   
     //初始化SDK
@@ -90,19 +164,10 @@ int main(int argc, char const *argv[])
         {
             // 绘制检测框（绿色）
             cv::rectangle(frame, det.rect, cv::Scalar(0, 255, 0), 2);
-
-            // 类别 + 置信度文本
-            std::string label = "ID:" + std::to_string(det.class_id) +
-                            " conf:" + cv::format("%.2f", det.confidence);
-            int baseLine = 0;
-            cv::Size labelSize = cv::getTextSize(label, cv::FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
-            cv::rectangle(frame,
-                      cv::Point(det.rect.x, det.rect.y - labelSize.height - baseLine),
-                      cv::Point(det.rect.x + labelSize.width, det.rect.y),
-                      cv::Scalar(0, 255, 0), cv::FILLED);
-            cv::putText(frame, label,
-                    cv::Point(det.rect.x, det.rect.y - baseLine),
-                    cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 0), 1);
+            
+            
+            
+            
         }
     
         
