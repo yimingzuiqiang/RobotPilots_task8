@@ -89,11 +89,11 @@ void Camera::camera_init()
     this->my_nRet = MV_USB_SetTransferWays(this->my_handle,transfer_way);
     check_camera(this->my_nRet);
 
-    //设置缓存节点个数 为10个
-    this->my_nRet = MV_CC_SetImageNodeNum(my_handle,10);
+    //设置缓存节点个数 为1个
+    this->my_nRet = MV_CC_SetImageNodeNum(my_handle,1);
     check_camera(this->my_nRet);
 
-    //曝光设置(设置曝光时间为50000us)
+    //曝光设置(设置曝光时间为40000us)
     this->my_nRet = MV_CC_SetFloatValue(this->my_handle,"ExposureTime",40000.0);
     check_camera(this->my_nRet);
     
