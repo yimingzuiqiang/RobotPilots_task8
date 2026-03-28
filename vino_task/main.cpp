@@ -15,7 +15,6 @@ using cv::Point2f;
 using cv::Point3f;
 using std::vector;
 
-cv::Mat frame;
 
 // 枚举相机设备，返回设备列表
 MV_CC_DEVICE_INFO_LIST get_device_list()
@@ -69,10 +68,7 @@ MV_CC_DEVICE_INFO_LIST get_device_list()
 float big_armor_height = 0.055;
 // float big_armor_width = 0.225;
 float big_armor_width = 0.135;
-// 大装甲板的高和宽（单位m）
-float big_armor_height = 0.055;
-// float big_armor_width = 0.225;
-float big_armor_width = 0.135;
+
 
 // 存储3D世界坐标系的装甲板的左上，左下，右下，右上点的坐标
 std::vector<cv::Point3f> world_points =
@@ -87,21 +83,6 @@ std::vector<cv::Point3f> world_points =
         cv::Point3f(big_armor_width / 2.0, -big_armor_height / 2.0, 0.0),  // 右上
 };
 
-// 装甲板坐标系的端点
-vector<cv::Point3f> axis_3Dpoints =
-    {
-        // 坐标原点
-        cv::Point3f(0.0, 0.0, 0.0),
-
-        // z轴端点，朝里，蓝色
-        cv::Point3f(0.0, 0.0, 0.08),
-
-        // x轴端点，水平向右，红色
-        cv::Point3f(0.08, 0.0, 0.0),
-
-        // y轴端点，水平向下，绿色
-        cv::Point3f(0.0, 0.08, 0.0),
-};
 
 // 像素坐标系的端点
 std::vector<cv::Point2f> axis_2Dpoints;
@@ -121,11 +102,8 @@ vector<cv::Point3f> axis_3Dpoints =
         cv::Point3f(0.0, 0.08, 0.0),
 };
 
-// 像素坐标系的端点
-std::vector<cv::Point2f> axis_2Dpoints;
 
 // 存储YOLO识别出的像素坐标系的装甲板的左上，左下，右下，右上点的坐标（keypoints四个点）
-std::vector<cv::Point2f> image_points;
 std::vector<cv::Point2f> image_points;
 
 // 相机内参矩阵
@@ -138,29 +116,26 @@ cv::Mat D = (cv::Mat_<double>(1, 5) << -0.1382, 0.5323, 0.0012, -0.0023, 0);
 
 // 旋转矩阵
 cv::Mat R;
-cv::Mat R;
+
 
 // 平移向量
 cv::Mat T;
-cv::Mat T;
+
 
 // Pitch角
 float pitch = 0.0;
-float pitch = 0.0;
+
 
 // Roll角
 float roll = 0.0;
-float roll = 0.0;
+
 
 // Yaw角
 float yaw = 0.0;
 
 // 距离
 float core_distance = 0.0;
-float yaw = 0.0;
 
-// 距离
-float core_distance = 0.0;
 
 // 传入像素坐标系的四个角点
 void cool_pnp(vector<Point2f> img_points)
