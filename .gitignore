@@ -1,0 +1,7 @@
+*.rar
+*.zip
+*.bag
+build/
+.DS_Store
+*.deb
+.vscode/
